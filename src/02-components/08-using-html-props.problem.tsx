@@ -1,6 +1,14 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 
-export const Button = ({ className, ...rest }: {}) => {
+// Sol 1
+// Hover over the native button element and get the type | Very verbose
+type HTMLBtnProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+
+// Sol 2
+// ComponentProps - Recommended
+type HTMLbtnprops = ComponentProps<"button">
+
+export const Button = ({ className, ...rest }: HTMLbtnprops) => {
   return (
     <button {...rest} className={`default-classname ${className}`}></button>
   );

@@ -2,8 +2,10 @@ import { useCallback } from "react";
 import { Equal, Expect } from "../helpers/type-utils";
 
 export const Buttons = (props: { id: string }) => {
-  const onClick = useCallback<string>(
-    (buttonName) => {
+  // Good but verbose. We should allow to the inference to work on by just typing the buttonName type to string 
+  // const onClick = useCallback<(name: string) => void>(/
+  const onClick = useCallback(
+    (buttonName: string) => {
       console.log(props.id, buttonName);
     },
     [props.id],

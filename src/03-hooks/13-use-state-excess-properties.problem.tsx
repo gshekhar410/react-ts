@@ -17,7 +17,7 @@ export const Tags = () => {
           <button
             key={tag.id}
             onClick={() => {
-              setState((currentState) => ({
+              setState((currentState): TagState => ({
                 ...currentState,
                 // @ts-expect-error
                 tagselected: tag.id,
@@ -30,7 +30,7 @@ export const Tags = () => {
       })}
       <button
         onClick={() => {
-          setState((currentState) => ({
+          setState((currentState): TagState => ({
             ...currentState,
             tags: [
               ...currentState.tags,
@@ -49,3 +49,12 @@ export const Tags = () => {
     </div>
   );
 };
+
+// TS knowledge: In TS you are allowed to pass excess properties from the return values inside functions. 
+// TS doesn't check for excess properties that time by default
+
+// To avoid the issue try to type the return value of the function which should solve this.
+
+// So in TS functions typings tends to be little bit more linient
+
+// In general in TS world, you should try to make ts do object comparison rather than function ones.
